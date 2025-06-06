@@ -1,41 +1,33 @@
+export const SERVER_URL = "https://gpa-genie.onrender.com";
+
 export const COLORS = {
-  main: "#B0DB9C",
-  primary: "#90D1CA",
-  secondary: "#129990",
-  tertiary: "#096B68",
+  main: "#181C14",
+  primary: "#3C3D37",
+  secondary: "#697565",
+  tertiary: "#ECDFCC",
   black: "#000000",
   white: "#ffffff",
   red: "#FB2576",
-  gray: "#758694",
   transparent: "transparent",
-  gray100: "#F2F2F2",
-  gray200: "#DBDBDB",
-  facebook: "#1373F7",
-  google: "#4285F4",
+  gray100: "#DDE6ED",
+  gray200: "#9DB2BF",
 };
 
 export const Fonts = {
-  "GentiumPlus-Bold": require("@/assets/fonts/GentiumPlus-Bold.ttf"),
-  "GentiumPlus-Regular": require("@/assets/fonts/GentiumPlus-Regular.ttf"),
-  "GentiumPlus-Italic": require("@/assets/fonts/GentiumPlus-Italic.ttf"),
-  "GentiumPlus-BoldItalic": require("@/assets/fonts/GentiumPlus-BoldItalic.ttf"),
+  "Corben-Bold": require("@/assets/fonts/Corben-Bold.ttf"),
+  "Corben-Regular": require("@/assets/fonts/Corben-Regular.ttf"),
 };
 export const FONTS = {
-  regular: "GentiumPlus-Regular",
-  bold: "GentiumPlus-Bold",
-  boldItalic: "GentiumPlus-BoldItalic",
-  italic: "GentiumPlus-italic",
+  regular: "Corben-Regular",
+  bold: "Corben-Bold",
 };
 
 export const AUDIOS = {
-  published: require("@/assets/sounds/published.mp3"),
+  // published: require("@/assets/sounds/published.mp3"),
 };
 
 export const STORAGE_NAME = {
-  CREATE_FORM: "create-form",
   ME: "user-me",
-  LOCATION: "my-location",
-  WISHLIST: "my-wish-list",
   SETTINGS: "my-settings",
 };
 
