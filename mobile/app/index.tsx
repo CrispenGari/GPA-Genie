@@ -36,7 +36,7 @@ const Page = () => {
         <View
           style={{
             flex: 1,
-            backgroundColor: COLORS.white,
+            backgroundColor: COLORS.main,
           }}
         >
           <View
@@ -49,13 +49,13 @@ const Page = () => {
           >
             <Text
               style={{
-                color: COLORS.black,
+                color: COLORS.white,
                 textAlign: "center",
                 fontFamily: FONTS.bold,
                 fontSize: 25,
               }}
             >
-              PeerMart
+              GPA GENIE
             </Text>
             <Animated.Image
               source={require("../assets/images/icon.png")}
@@ -67,7 +67,7 @@ const Page = () => {
                 margin: 20,
                 maxWidth: 400,
                 borderRadius: 10,
-                backgroundColor: COLORS.main,
+                backgroundColor: COLORS.secondary,
                 padding: 10,
                 width: "100%",
                 justifyContent: "center",
@@ -78,9 +78,9 @@ const Page = () => {
               <View
                 style={{
                   position: "absolute",
-                  backgroundColor: COLORS.main,
+                  backgroundColor: COLORS.secondary,
                   top: -10,
-                  width: 150,
+                  width: 180,
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: 999,
@@ -93,11 +93,11 @@ const Page = () => {
               >
                 <Text
                   style={{
-                    color: COLORS.black,
+                    color: COLORS.white,
                     fontFamily: FONTS.bold,
                   }}
                 >
-                  About PeerMart
+                  About GPA GINIE
                 </Text>
               </View>
 
@@ -105,8 +105,9 @@ const Page = () => {
                 style={[
                   {
                     textAlign: "center",
-                    fontFamily: FONTS.bold,
+                    fontFamily: FONTS.regular,
                     fontSize: 16,
+                    color: COLORS.white,
                   },
                 ]}
                 typing={1}
@@ -117,7 +118,17 @@ const Page = () => {
             </View>
 
             <TouchableOpacity
-              style={{ width: "100%", maxWidth: 300 }}
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                alignSelf: "center",
+                width: "100%",
+                maxWidth: 300,
+                backgroundColor: COLORS.secondary,
+                padding: 10,
+                marginTop: 100,
+                borderRadius: 5,
+              }}
               onPress={async () => {
                 if (settings.haptics) {
                   await onImpact();
@@ -142,8 +153,8 @@ const Page = () => {
                 marginBottom: 20,
                 fontSize: 16,
                 textAlign: "center",
-                fontFamily: FONTS.bold,
-                color: COLORS.black,
+                fontFamily: FONTS.regular,
+                color: COLORS.white,
               }}
             >
               By using PeerMart you are automatically accepting{" "}
@@ -183,8 +194,8 @@ export default Page;
 
 const styles = StyleSheet.create({
   clickable_text: {
-    color: COLORS.primary,
-    fontFamily: FONTS.bold,
+    color: COLORS.red,
+    fontFamily: FONTS.regular,
     textDecorationLine: "underline",
   },
 });
