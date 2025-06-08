@@ -2,13 +2,12 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { STORAGE_NAME } from "../constants";
 import { zustandStorage } from "./storage";
-
-export type TYear = `Year ${number}`;
 interface TMe {
-  nickname: string;
-  gender: "male" | "female";
-  dob: Date;
-  year: TYear;
+  nickname?: string;
+  gender?: "male" | "female";
+  dob?: Date;
+  year?: number;
+  completed: boolean;
 }
 
 interface TMeState {

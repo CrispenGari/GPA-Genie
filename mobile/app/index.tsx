@@ -125,7 +125,7 @@ const Page = () => {
                 width: "100%",
                 maxWidth: 300,
                 backgroundColor: COLORS.secondary,
-                padding: 10,
+                padding: 15,
                 marginTop: 100,
                 borderRadius: 5,
               }}
@@ -133,7 +133,7 @@ const Page = () => {
                 if (settings.haptics) {
                   await onImpact();
                 }
-                router.replace("/(auth)/login");
+                router.replace("/(questions)/(basic)/nickname");
               }}
             >
               <Text
@@ -157,7 +157,7 @@ const Page = () => {
                 color: COLORS.white,
               }}
             >
-              By using PeerMart you are automatically accepting{" "}
+              By using GPA Genie you are automatically accepting{" "}
               <Text
                 onPress={async () => {
                   if (settings.haptics) {

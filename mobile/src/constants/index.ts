@@ -14,12 +14,12 @@ export const COLORS = {
 };
 
 export const Fonts = {
-  "Corben-Bold": require("@/assets/fonts/Corben-Bold.ttf"),
-  "Corben-Regular": require("@/assets/fonts/Corben-Regular.ttf"),
+  "AveriaSerifLibre-Bold": require("@/assets/fonts/AveriaSerifLibre-Bold.ttf"),
+  "AveriaSerifLibre-Regular": require("@/assets/fonts/AveriaSerifLibre-Regular.ttf"),
 };
 export const FONTS = {
-  regular: "Corben-Regular",
-  bold: "Corben-Bold",
+  regular: "AveriaSerifLibre-Regular",
+  bold: "AveriaSerifLibre-Bold",
 };
 
 export const AUDIOS = {
@@ -61,4 +61,39 @@ export const LANDING_MESSAGES = [
   "🤖 Let our AI model predict your future CGPA based on past performance and upcoming goals 🧠.",
   "⭐ Reflect on your academic growth 🌱 and get tips to improve from data-driven analysis 📌.",
   "🙌 GPA GINIE is here to support your academic success – one grade at a time! 🎓📈",
+];
+
+export const GENDERS = [
+  {
+    label: "Male",
+    id: 0,
+    value: "male",
+  },
+  {
+    label: "Female",
+    id: 1,
+    value: "female",
+  },
+];
+export const YEARS = [
+  {
+    label: "Year 1",
+    id: 0,
+    value: 1,
+  },
+  {
+    label: "Year 2",
+    id: 1,
+    value: 2,
+  },
+  {
+    label: "Year 3",
+    id: 2,
+    value: 3,
+  },
+  {
+    label: "Year 4",
+    id: 3,
+    value: 4,
+  },
 ];

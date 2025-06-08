@@ -13,6 +13,7 @@ import { StatusBar } from "expo-status-bar";
 import { useSettingsStore } from "@/src/store/settingsStore";
 import { onImpact } from "@/src/utils";
 import { Ionicons } from "@expo/vector-icons";
+import { useMeStore } from "@/src/store/meStore";
 
 LogBox.ignoreLogs;
 LogBox.ignoreAllLogs();
@@ -77,9 +78,32 @@ const RootLayout = () => {
   const router = useRouter();
   const { settings } = useSettingsStore();
 
+  const { me } = useMeStore();
+  React.useEffect(() => {
+    if (!!me && me.completed) {
+      router.replace("/(tabs)");
+    }
+  }, []);
+
   return (
     <Stack initialRouteName="index">
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="(questions)/(basic)/nickname"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(basic)/dob"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(basic)/gender"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(basic)/year"
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="+not-found" options={{ headerShown: false }} />
 

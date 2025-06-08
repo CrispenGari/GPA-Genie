@@ -12,7 +12,7 @@ const Layout = () => {
 
   return (
     <Tabs
-      initialRouteName="home"
+      initialRouteName="index"
       screenOptions={{
         tabBarStyle: {
           height:
@@ -22,13 +22,14 @@ const Layout = () => {
           elevation: 0,
         },
         tabBarHideOnKeyboard: true,
-        tabBarInactiveTintColor: COLORS.gray,
+        tabBarInactiveTintColor: COLORS.gray200,
         tabBarActiveTintColor: COLORS.secondary,
         headerShown: true,
         tabBarLabelStyle: {
-          fontFamily: FONTS.bold,
+          // fontFamily: FONTS.bold,
           fontSize: 12,
           marginTop: width >= 600 ? 10 : 0,
+          // paddingBottom: 25,
         },
         tabBarBackground: () => (
           <BlurView

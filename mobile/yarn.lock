@@ -1422,6 +1422,13 @@
   dependencies:
     merge-options "^3.0.4"
 
+"@react-native-community/datetimepicker@8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-8.3.0.tgz#d734a77ae5fdf9585ea2eba0d2b5cf47404c0a09"
+  integrity sha512-K/KgaJbLtjMpx4PaG4efrVIcSe6+DbLufeX1lwPB5YY8i3sq9dOh6WcAcMTLbaRTUpurebQTkl7puHPFm9GalA==
+  dependencies:
+    invariant "^2.2.4"
+
 "@react-native/assets-registry@0.79.3":
   version "0.79.3"
   resolved "https://registry.yarnpkg.com/@react-native/assets-registry/-/assets-registry-0.79.3.tgz#022218d55a5d9d221a6d176987ab0b35c10d388b"
@@ -5660,6 +5667,11 @@ react-native-gesture-handler@~2.24.0:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
+
+react-native-input-select@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-input-select/-/react-native-input-select-2.1.3.tgz#b275554ed5c3649a209983c5b2c8bc2a076dbe41"
+  integrity sha512-JpuF+tFxnU/fJScafuZggFnJV1TSBp/kEH/G8c4j3/itquygpXQlIMlWl0h/xJ3W8ADU//k+hseE+c2H9TF70g==
 
 react-native-is-edge-to-edge@1.1.7, react-native-is-edge-to-edge@^1.1.6, react-native-is-edge-to-edge@^1.1.7:
   version "1.1.7"
