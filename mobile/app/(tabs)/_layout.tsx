@@ -1,3 +1,4 @@
+import ProfileCard from "@/src/components/ProfileCard/ProfileCard";
 import { COLORS, FONTS } from "@/src/constants";
 import { useMediaQuery } from "@/src/hooks";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
@@ -9,7 +10,6 @@ const Layout = () => {
   const {
     dimension: { width },
   } = useMediaQuery();
-
   return (
     <Tabs
       initialRouteName="index"
@@ -17,23 +17,23 @@ const Layout = () => {
         tabBarStyle: {
           height:
             width >= 600 ? 70 : Platform.select({ ios: 100, android: 80 }),
-          backgroundColor: COLORS.transparent,
+          backgroundColor: COLORS.main,
           position: "absolute",
           elevation: 0,
         },
         tabBarHideOnKeyboard: true,
-        tabBarInactiveTintColor: COLORS.gray200,
-        tabBarActiveTintColor: COLORS.secondary,
+        tabBarInactiveTintColor: COLORS.tertiary,
+        tabBarActiveTintColor: COLORS.red,
         headerShown: true,
         tabBarLabelStyle: {
-          // fontFamily: FONTS.bold,
+          fontFamily: FONTS.bold,
           fontSize: 12,
           marginTop: width >= 600 ? 10 : 0,
-          // paddingBottom: 25,
+          paddingBottom: 25,
         },
         tabBarBackground: () => (
           <BlurView
-            tint="light"
+            tint="dark"
             intensity={100}
             style={StyleSheet.absoluteFill}
           />
@@ -43,10 +43,13 @@ const Layout = () => {
       <Tabs.Screen
         name="index"
         options={{
-          title: "CGPA",
+          title: "Dashboard",
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="auto-graph" size={size} color={color} />
           ),
+          header: (props) => {
+            return <ProfileCard {...props} title="Home" />;
+          },
         }}
       />
       <Tabs.Screen
@@ -56,6 +59,9 @@ const Layout = () => {
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="grass" size={size} color={color} />
           ),
+          header: (props) => {
+            return <ProfileCard {...props} title="History" />;
+          },
         }}
       />
 
@@ -66,7 +72,9 @@ const Layout = () => {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="settings" color={color} size={size} />
           ),
-          headerShown: false,
+          header: (props) => {
+            return <ProfileCard {...props} title="Settings" />;
+          },
         }}
       />
     </Tabs>

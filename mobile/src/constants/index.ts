@@ -29,16 +29,17 @@ export const AUDIOS = {
 export const STORAGE_NAME = {
   ME: "user-me",
   SETTINGS: "my-settings",
+  HISTORY: "my-history",
 };
 
 export const relativeTimeObject = {
   future: "in %s",
   past: "%s",
-  s: "now",
-  m: "1m",
-  mm: "%dm",
-  h: "1h",
-  hh: "%dh",
+  s: "Today",
+  m: "Today",
+  mm: "Today",
+  h: "Today",
+  hh: "Today",
   d: "1d",
   dd: "%dd",
   M: "1M",

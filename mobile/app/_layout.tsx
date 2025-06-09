@@ -34,7 +34,6 @@ Notifications.setNotificationHandler({
 const client = new QueryClient();
 const Layout = () => {
   const [appIsReady, setAppIsReady] = React.useState(false);
-
   React.useEffect(() => {
     async function prepare() {
       try {
@@ -61,7 +60,6 @@ const Layout = () => {
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <StatusBar style="light" />
-
       <GestureHandlerRootView>
         <BottomSheetModalProvider>
           <QueryClientProvider client={client}>
@@ -88,6 +86,48 @@ const RootLayout = () => {
   return (
     <Stack initialRouteName="index">
       <Stack.Screen name="index" options={{ headerShown: false }} />
+
+      <Stack.Screen
+        name="(questions)/(health)/anxiety"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(health)/depression"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(health)/mental-health-support"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(health)/panic-attack"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(health)/specialist-treatment"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(health)/symptom-frequency"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(others)/academic-engagement"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(others)/sleep-quality"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(others)/study-hours-week"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(questions)/(others)/study-stress-level"
+        options={{ headerShown: false }}
+      />
+
       <Stack.Screen
         name="(questions)/(basic)/nickname"
         options={{ headerShown: false }}
@@ -147,6 +187,47 @@ const RootLayout = () => {
           ),
         }}
         name="(common)/tnc"
+      />
+      <Stack.Screen
+        options={{
+          presentation: Platform.select({
+            ios: "modal",
+            android: "fullScreenModal",
+          }),
+          headerTitle: "Help",
+          headerTitleStyle: {
+            fontFamily: FONTS.bold,
+            fontSize: 24,
+            color: COLORS.white,
+          },
+          headerTitleAlign: "center",
+          navigationBarHidden: true,
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: COLORS.main,
+          },
+          headerLeft: ({}) => (
+            <TouchableOpacity
+              style={{
+                marginRight: 20,
+              }}
+              onPressIn={async () => {
+                if (settings.haptics) {
+                  await onImpact();
+                }
+                if (router.canGoBack()) {
+                  router.back();
+                } else {
+                  router.replace("/");
+                }
+              }}
+              hitSlop={20}
+            >
+              <Ionicons name="close-outline" size={30} color={COLORS.white} />
+            </TouchableOpacity>
+          ),
+        }}
+        name="(common)/help"
       />
       <Stack.Screen
         options={{
