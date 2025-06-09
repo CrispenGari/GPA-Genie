@@ -4,6 +4,7 @@ from models import regressor, predict_cgpa, cgpa_ranges
 from typing import Annotated
 import time
 import pandas as pd
+import uuid as uuid
 
 
 predictCGPARouter = APIRouter(prefix="/api/v1/cgpa")
@@ -63,6 +64,7 @@ def predict_tb_(
                 "ok": True,
                 "status": "success",
                 "prediction": result,
+                "id": str(uuid.uuid4())
             },
             status_code=200,
         )
