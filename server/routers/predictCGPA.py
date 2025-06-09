@@ -58,14 +58,14 @@ def predict_tb_(
             result = cgpa_ranges[4]
 
         result["cgpa"] = cgpa
-        result['id'] = str(uuid.uuid4())
+        result["id"] = str(uuid.uuid4())
         return JSONResponse(
             {
                 "time": time.time() - start,
                 "ok": True,
                 "status": "success",
                 "prediction": result,
-                "id": str(uuid.uuid4())
+                "id": str(uuid.uuid4()),
             },
             status_code=200,
         )
