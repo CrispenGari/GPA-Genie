@@ -2,7 +2,7 @@
 
 **Track your GPA growth — every week, effortlessly.**
 
-<p align="center"> <img src="/images/icon.png" alt="Icon"/></p>
+<p align="center"> <img src="/images/icon.png" alt="Icon" width="100"/></p>
 
 ### 📱 About GPA Genie
 
