@@ -6,9 +6,12 @@ import { useHistoryStore } from "@/src/store/historyStore";
 import dayjs from "dayjs";
 import { useSettingsStore } from "@/src/store/settingsStore";
 import { customRelativeTime, onImpact } from "@/src/utils";
+import GPABottomSheet from "../BottomSheets/GPABottomSheet";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
 
 const LastPerformance = () => {
   const { last } = useHistoryStore();
+  const gpaBottomSheetRef = React.useRef<BottomSheetModal>(null);
   const { settings } = useSettingsStore();
   const pieData = React.useMemo(() => {
     if (!!!last) return [];
@@ -50,66 +53,70 @@ const LastPerformance = () => {
     );
 
   return (
-    <TouchableOpacity
-      style={{
-        flex: 0.6,
-        padding: 10,
-        borderRadius: 5,
-        backgroundColor: COLORS.secondary,
-      }}
-      onPress={async () => {
-        if (settings.haptics) {
-          await onImpact();
-        }
-      }}
-    >
-      <Text
+    <>
+      <GPABottomSheet history={last} ref={gpaBottomSheetRef} />
+      <TouchableOpacity
         style={{
-          fontFamily: FONTS.regular,
-          fontSize: 14,
-          color: COLORS.tertiary,
+          flex: 0.6,
+          padding: 10,
+          borderRadius: 5,
+          backgroundColor: COLORS.secondary,
+        }}
+        onPress={async () => {
+          if (settings.haptics) {
+            await onImpact();
+          }
+          gpaBottomSheetRef.current?.present();
         }}
       >
-        Last Performance
-      </Text>
-      <Text
-        style={{
-          fontFamily: FONTS.bold,
-          fontSize: 20,
-          color: COLORS.white,
-        }}
-        numberOfLines={1}
-      >
-        {customRelativeTime(dayjs(new Date(last?.date)))}
-      </Text>
-      <View style={{ alignSelf: "center", marginVertical: 10 }}>
-        <PieChart
-          donut
-          isAnimated
-          animationDuration={300}
-          innerRadius={40}
-          data={pieData}
-          radius={60}
-          centerLabelComponent={() => {
-            return (
-              <View
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Text style={{ fontSize: 20, fontFamily: FONTS.bold }}>
-                  {percentage.toFixed(0)}%
-                </Text>
-                <Text style={{ fontFamily: FONTS.regular }}>
-                  {last?.description}
-                </Text>
-              </View>
-            );
+        <Text
+          style={{
+            fontFamily: FONTS.regular,
+            fontSize: 14,
+            color: COLORS.tertiary,
           }}
-        />
-      </View>
-    </TouchableOpacity>
+        >
+          Last Performance
+        </Text>
+        <Text
+          style={{
+            fontFamily: FONTS.bold,
+            fontSize: 20,
+            color: COLORS.white,
+          }}
+          numberOfLines={1}
+        >
+          {customRelativeTime(dayjs(new Date(last?.date)))}
+        </Text>
+        <View style={{ alignSelf: "center", marginVertical: 10 }}>
+          <PieChart
+            donut
+            isAnimated
+            animationDuration={300}
+            innerRadius={40}
+            data={pieData}
+            radius={60}
+            centerLabelComponent={() => {
+              return (
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text style={{ fontSize: 20, fontFamily: FONTS.bold }}>
+                    {percentage.toFixed(0)}%
+                  </Text>
+                  <Text style={{ fontFamily: FONTS.regular }}>
+                    {last?.description}
+                  </Text>
+                </View>
+              );
+            }}
+          />
+        </View>
+      </TouchableOpacity>
+    </>
   );
 };
 

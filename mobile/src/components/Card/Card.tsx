@@ -15,7 +15,7 @@ const Card = ({
         {
           padding: 10,
           borderRadius: 10,
-          backgroundColor: COLORS.white,
+          backgroundColor: COLORS.gray100,
         },
         style,
       ]}

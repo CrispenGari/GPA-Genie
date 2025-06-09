@@ -1,12 +1,3 @@
-export interface TPerformance {
-  range: string;
-  description: string;
-  grade_equivalent: string;
-  percentage_range: string;
-  cgpa: number;
-  date: Date;
-}
-
 export interface TBody {
   gender: string;
   age: number;
@@ -29,8 +20,12 @@ export interface Prediction {
   grade_equivalent: string;
   percentage_range: string;
   cgpa: number;
+  id: string;
 }
 
+export interface TPerformance extends Prediction {
+  date: Date;
+}
 export interface TResponse {
   time: number;
   ok: boolean;
@@ -38,6 +33,7 @@ export interface TResponse {
   prediction?: Prediction;
   message?: string;
   field?: string;
+  id: string;
 }
 
 export interface THealth {

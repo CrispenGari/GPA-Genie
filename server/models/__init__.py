@@ -27,7 +27,7 @@ cgpa_ranges =  [
     },
     {
         "range": "3.00–3.99",
-        "description": "Good to Very Good",
+        "description": "Good",
         "grade_equivalent": "B",
         "percentage_range": "80–89%"
     },
@@ -45,7 +45,7 @@ cgpa_ranges =  [
     },
     {
         "range": "0.00–0.99",
-        "description": "Poor / Fail",
+        "description": "Poor",
         "grade_equivalent": "F",
         "percentage_range": "0–59%"
     }
