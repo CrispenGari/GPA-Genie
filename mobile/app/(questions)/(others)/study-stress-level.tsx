@@ -19,13 +19,14 @@ import { useMeStore } from "@/src/store/meStore";
 import Spinner from "react-native-loading-spinner-overlay";
 import { THealth } from "@/src/types";
 import { useHistoryStore } from "@/src/store/historyStore";
-
+import { useAudioPlayer } from "expo-audio";
 const Page = () => {
   const [state, setState] = React.useState<{
     value: number;
   }>({
     value: 1,
   });
+  const player = useAudioPlayer(require("@/assets/sounds/results.wav"));
   const { me } = useMeStore();
   const { settings } = useSettingsStore();
   const { health, academicEngagement, sleepQuality, studyHours } =
@@ -87,6 +88,11 @@ const Page = () => {
         ...data.prediction,
         date: new Date(),
       });
+
+      if (settings.sound) {
+        await player.play();
+      }
+
       router.replace({
         pathname: "/(tabs)",
       });

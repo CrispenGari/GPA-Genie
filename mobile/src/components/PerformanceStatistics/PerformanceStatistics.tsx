@@ -105,6 +105,8 @@ const PerformanceStatistics = () => {
         <SegmentedControl
           sliderStyle={{ backgroundColor: COLORS.tertiary }}
           style={{ flex: 1, backgroundColor: COLORS.white }}
+          activeFontStyle={{ fontFamily: FONTS.bold, color: COLORS.main }}
+          tabStyle={{ backgroundColor: COLORS.white }}
           fontStyle={{
             fontFamily: FONTS.bold,
             color: COLORS.main,

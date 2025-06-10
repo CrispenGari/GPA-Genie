@@ -31,7 +31,7 @@ const Page = () => {
       if (entryDate === today) {
         Alert.alert(
           "GPA Ginie",
-          "You have already tracked GPA for today.",
+          "You are done for today.",
           [
             {
               text: "OK",
