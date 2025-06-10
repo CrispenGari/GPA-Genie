@@ -1,4 +1,10 @@
-import { View, Text, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Alert,
+} from "react-native";
 import React from "react";
 import Form from "@/src/components/Form/Form";
 import { COLORS, FONTS } from "@/src/constants";
@@ -7,6 +13,7 @@ import { useRouter } from "expo-router";
 import Dropdown from "react-native-input-select";
 import { onImpact } from "@/src/utils";
 import { useSettingsStore } from "@/src/store/settingsStore";
+import { useHistoryStore } from "@/src/store/historyStore";
 
 const Page = () => {
   const [state, setState] = React.useState<{
@@ -16,6 +23,32 @@ const Page = () => {
   });
   const { settings } = useSettingsStore();
   const router = useRouter();
+  const { last } = useHistoryStore();
+  React.useEffect(() => {
+    if (!!last) {
+      const today = new Date().toISOString().split("T")[0];
+      const entryDate = new Date(last.date).toISOString().split("T")[0];
+      if (entryDate === today) {
+        Alert.alert(
+          "GPA Ginie",
+          "You have already tracked GPA for today.",
+          [
+            {
+              text: "OK",
+              style: "default",
+              onPress: async () => {
+                if (settings.haptics) {
+                  await onImpact();
+                }
+                router.replace({ pathname: "/(tabs)" });
+              },
+            },
+          ],
+          { cancelable: false }
+        );
+      }
+    }
+  }, [last]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

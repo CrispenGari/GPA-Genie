@@ -29,6 +29,16 @@
     "plugins": [
       "expo-router",
       [
+        "expo-notifications",
+        {
+          "icon": "./assets/icons/notifications.png",
+          "color": "#ffffff",
+          "defaultChannel": "default",
+          "sounds": ["./assets/sounds/notifications.wav"],
+          "enableBackgroundRemoteNotifications": false
+        }
+      ],
+      [
         "expo-splash-screen",
         {
           "image": "./assets/images/splash.png",
@@ -37,7 +47,65 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      ["expo-quick-actions"]
+      [
+        "expo-quick-actions",
+        {
+          "androidIcons": {
+            "performance": {
+              "foregroundImage": "./assets/icons/performance-android.png",
+              "backgroundColor": "#ffffff"
+            },
+            "history": {
+              "foregroundImage": "./assets/icons/history-android.png",
+              "backgroundColor": "#ffffff"
+            },
+            "settings": {
+              "foregroundImage": "./assets/icons/settings-android.png",
+              "backgroundColor": "#ffffff"
+            }
+          },
+          "iosIcons": {
+            "performance": {
+              "1x": "./assets/icons/performance.png"
+            },
+            "history": {
+              "1x": "./assets/icons/history.png"
+            },
+            "settings": {
+              "1x": "./assets/icons/settings.png"
+            }
+          },
+          "iosActions": [
+            {
+              "id": "performance",
+              "title": "Performance",
+              "subtitle": "Check your GPA performance",
+              "icon": "performance",
+              "params": {
+                "href": "/(questions)/(health)/anxiety"
+              }
+            },
+            {
+              "id": "history",
+              "title": "History",
+              "subtitle": "Check your GPA history",
+              "icon": "history",
+              "params": {
+                "href": "/(tabs)/history"
+              }
+            },
+            {
+              "id": "settings",
+              "title": "Settings",
+              "subtitle": "Open your Settings",
+              "icon": "settings",
+              "params": {
+                "href": "/(tabs)/settings"
+              }
+            }
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

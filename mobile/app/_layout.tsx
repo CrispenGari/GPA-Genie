@@ -14,6 +14,12 @@ import { useSettingsStore } from "@/src/store/settingsStore";
 import { onImpact } from "@/src/utils";
 import { Ionicons } from "@expo/vector-icons";
 import { useMeStore } from "@/src/store/meStore";
+import * as QuickActions from "expo-quick-actions";
+import { useQuickActionRouting } from "expo-quick-actions/router";
+import {
+  registerForPushNotificationsAsync,
+  scheduleDailyNotification,
+} from "@/src/utils/notifications";
 
 LogBox.ignoreLogs;
 LogBox.ignoreAllLogs();
@@ -24,10 +30,10 @@ SplashScreen.setOptions({
 });
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
-    shouldPlaySound: false,
-    shouldSetBadge: false,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
     shouldShowBanner: true,
-    shouldShowList: true,
+    shouldShowList: false,
   }),
 });
 
@@ -73,10 +79,70 @@ const Layout = () => {
 
 export default Layout;
 const RootLayout = () => {
+  useQuickActionRouting();
   const router = useRouter();
   const { settings } = useSettingsStore();
-
   const { me } = useMeStore();
+  React.useEffect(() => {
+    QuickActions.setItems([
+      {
+        title: "Today's Performance",
+        subtitle: "Check your GPA performance",
+        icon: Platform.select({
+          ios: "performance",
+          android: "performance",
+        }),
+        id: "0",
+        params: { href: "/(questions)/(health)/anxiety" },
+      },
+      {
+        title: "Performance History",
+        subtitle: "View your performance History",
+        icon: Platform.select({
+          ios: "history",
+          android: "history",
+        }),
+        id: "1",
+        params: { href: "/(tabs)/history" },
+      },
+      {
+        title: "Settings and Preferences",
+        icon: Platform.select({
+          ios: "settings",
+          android: "settings",
+        }),
+        id: "2",
+        params: { href: "/(tabs)/settings" },
+      },
+    ]);
+  }, []);
+
+  React.useEffect(() => {
+    registerForPushNotificationsAsync().then((token) => {
+      if (!!token && settings.notifications && !!me) {
+        scheduleDailyNotification({
+          body: `👋 Good morning, ${me.nickname}. Track your daily GPA.`,
+        });
+      }
+    });
+  }, [me, settings]);
+
+  React.useEffect(() => {
+    const notificationListener = Notifications.addNotificationReceivedListener(
+      (_notification) => {}
+    );
+    const responseListener =
+      Notifications.addNotificationResponseReceivedListener((_response) => {
+        router.navigate({
+          pathname: "/(questions)/(health)/anxiety",
+        });
+      });
+    return () => {
+      responseListener.remove();
+      notificationListener.remove();
+    };
+  }, []);
+
   React.useEffect(() => {
     if (!!me && me.completed) {
       router.replace("/(tabs)");

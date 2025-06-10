@@ -41,6 +41,7 @@ const Page = () => {
       contentContainerStyle={{
         padding: 10,
         paddingBottom: 100,
+        gap: 5,
       }}
       style={{ flex: 1, backgroundColor: COLORS.main }}
       keyExtractor={(item) => item.id}
