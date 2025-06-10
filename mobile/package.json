@@ -71,7 +71,8 @@
     "doctor": {
       "reactNativeDirectoryCheck": {
         "exclude": [
-          "react-native-typewriter"
+          "react-native-typewriter",
+          "react-native-loading-spinner-overlay"
         ],
         "listUnknownPackages": false
       }

@@ -11,8 +11,15 @@ interface Props {
   onPrevious?: () => void;
   question: string;
   children: React.ReactNode;
+  showButtons?: boolean;
 }
-const Form = ({ question, onNext, onPrevious, children }: Props) => {
+const Form = ({
+  question,
+  onNext,
+  onPrevious,
+  children,
+  showButtons = true,
+}: Props) => {
   const { settings } = useSettingsStore();
   return (
     <Animated.View
@@ -24,7 +31,7 @@ const Form = ({ question, onNext, onPrevious, children }: Props) => {
         style={[
           {
             fontFamily: FONTS.bold,
-            fontSize: 25,
+            fontSize: showButtons ? 25 : 16,
             color: COLORS.white,
           },
         ]}
@@ -35,34 +42,36 @@ const Form = ({ question, onNext, onPrevious, children }: Props) => {
       </TypeWriter>
       {children}
 
-      <View style={{ flexDirection: "row", gap: 20, marginVertical: 20 }}>
-        <TouchableOpacity
-          onPress={async () => {
-            if (settings.haptics) {
-              await onImpact();
-            }
-            if (typeof onPrevious === "undefined") return;
-            onPrevious();
-          }}
-          style={[styles.btn]}
-          disabled={typeof onPrevious === "undefined"}
-        >
-          <Text style={[styles.btn_text, { color: COLORS.black }]}>
-            Previous
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.btn, { backgroundColor: COLORS.primary }]}
-          onPress={async () => {
-            if (settings.haptics) {
-              await onImpact();
-            }
-            onNext();
-          }}
-        >
-          <Text style={[styles.btn_text]}>Next</Text>
-        </TouchableOpacity>
-      </View>
+      {showButtons ? (
+        <View style={{ flexDirection: "row", gap: 20, marginVertical: 20 }}>
+          <TouchableOpacity
+            onPress={async () => {
+              if (settings.haptics) {
+                await onImpact();
+              }
+              if (typeof onPrevious === "undefined") return;
+              onPrevious();
+            }}
+            style={[styles.btn]}
+            disabled={typeof onPrevious === "undefined"}
+          >
+            <Text style={[styles.btn_text, { color: COLORS.black }]}>
+              Previous
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.btn, { backgroundColor: COLORS.primary }]}
+            onPress={async () => {
+              if (settings.haptics) {
+                await onImpact();
+              }
+              onNext();
+            }}
+          >
+            <Text style={[styles.btn_text]}>Next</Text>
+          </TouchableOpacity>
+        </View>
+      ) : null}
     </Animated.View>
   );
 };

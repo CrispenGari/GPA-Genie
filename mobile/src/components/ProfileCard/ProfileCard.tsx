@@ -8,15 +8,19 @@ import {
 import React from "react";
 import { COLORS, FONTS } from "@/src/constants";
 import { useMeStore } from "@/src/store/meStore";
-import { calculateAge, getGreetingMessage } from "@/src/utils";
+import { calculateAge, getGreetingMessage, onImpact } from "@/src/utils";
 import TypeWriter from "react-native-typewriter";
 import { Ionicons } from "@expo/vector-icons";
+import { useSettingsStore } from "@/src/store/settingsStore";
+import { useRouter } from "expo-router";
 
 interface Props {
   title: string;
 }
 const ProfileCard = ({ title }: Props) => {
   const { me } = useMeStore();
+  const { settings } = useSettingsStore();
+  const router = useRouter();
 
   return (
     <SafeAreaView
@@ -41,7 +45,17 @@ const ProfileCard = ({ title }: Props) => {
         {title}
       </Text>
 
-      <View style={{ flexDirection: "row", gap: 10, alignItems: "center" }}>
+      <TouchableOpacity
+        onPress={async () => {
+          if (settings.haptics) {
+            await onImpact();
+          }
+          router.navigate({
+            pathname: "/(common)/profile",
+          });
+        }}
+        style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
+      >
         <View style={{ flex: 1 }}>
           <TypeWriter
             style={{
@@ -70,7 +84,7 @@ const ProfileCard = ({ title }: Props) => {
         <TouchableOpacity hitSlop={20} style={{ marginRight: 5 }}>
           <Ionicons name="chevron-forward" size={25} color={COLORS.white} />
         </TouchableOpacity>
-      </View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };

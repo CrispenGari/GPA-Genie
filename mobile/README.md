@@ -12,3 +12,9 @@ Here are some demo screenshot for the mobile app.
 <img src="/images/2.jpg" alt="demo" width="200"/>
 <img src="/images/3.jpg" alt="demo" width="200"/>
 </p>
+
+Inspecting output of `eas` build
+
+```shell
+eas build:inspect --platform android --stage archive --output inspect-output
+```

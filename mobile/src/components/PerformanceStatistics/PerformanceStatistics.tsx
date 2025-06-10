@@ -103,7 +103,8 @@ const PerformanceStatistics = () => {
           </Text>
         </TouchableOpacity>
         <SegmentedControl
-          style={{ flex: 1 }}
+          sliderStyle={{ backgroundColor: COLORS.tertiary }}
+          style={{ flex: 1, backgroundColor: COLORS.white }}
           fontStyle={{
             fontFamily: FONTS.bold,
             color: COLORS.main,

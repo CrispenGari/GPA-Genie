@@ -1,4 +1,10 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 import React from "react";
 import { COLORS, FONTS } from "@/src/constants";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -14,24 +20,21 @@ const Page = () => {
   const { isInternetReachable } = useNetwork();
   const router = useRouter();
   const { settings } = useSettingsStore();
-  const { history } = useHistoryStore();
-  const hasTodayGPA = React.useMemo(
-    () =>
-      history.some((entry) => {
-        const today = new Date().toISOString().split("T")[0];
-        const entryDate = String(entry.date).split("T")[0];
-        return entryDate === today;
-      }),
-    [history]
-  );
+  const { last } = useHistoryStore();
+  const hasTodayGPA = React.useMemo(() => {
+    if (!!!last) return false;
+    const today = new Date().toISOString().split("T")[0];
+    const entryDate = new Date(last.date).toISOString().split("T")[0];
+    return entryDate === today;
+  }, [last]);
+
   return (
-    <View
+    <ScrollView
       style={{
         flex: 1,
-        padding: 20,
         backgroundColor: COLORS.main,
-        gap: 10,
       }}
+      contentContainerStyle={{ padding: 20, gap: 10, paddingBottom: 100 }}
     >
       <View
         style={{
@@ -98,7 +101,7 @@ const Page = () => {
         <LastPerformance />
       </View>
       <PerformanceStatistics />
-    </View>
+    </ScrollView>
   );
 };
 

@@ -140,10 +140,12 @@ const RootLayout = () => {
         name="(questions)/(basic)/gender"
         options={{ headerShown: false }}
       />
+
       <Stack.Screen
         name="(questions)/(basic)/year"
         options={{ headerShown: false }}
       />
+      <Stack.Screen name="(common)/profile" options={{ headerShown: false }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="+not-found" options={{ headerShown: false }} />
 
