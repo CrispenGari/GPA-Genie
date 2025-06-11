@@ -1,5 +1,5 @@
 import "react-native-reanimated";
-import { COLORS, FONTS, Fonts } from "@/src/constants";
+import { COLORS, FONTS, Fonts, STORAGE_NAME } from "@/src/constants";
 import { loadAsync } from "expo-font";
 import { Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -20,6 +20,7 @@ import {
   registerForPushNotificationsAsync,
   scheduleDailyNotification,
 } from "@/src/utils/notifications";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 LogBox.ignoreLogs;
 LogBox.ignoreAllLogs();
@@ -118,11 +119,18 @@ const RootLayout = () => {
   }, []);
 
   React.useEffect(() => {
-    registerForPushNotificationsAsync().then((token) => {
+    registerForPushNotificationsAsync().then(async (token) => {
       if (!!token && settings.notifications && !!me) {
-        scheduleDailyNotification({
-          body: `👋 Good morning, ${me.nickname}. Track your daily GPA.`,
-        });
+        const today = new Date().toISOString().split("T")[0];
+        const scheduledDate = await AsyncStorage.getItem(
+          STORAGE_NAME.NOTIFICATION_FLAG_KEY
+        );
+        if (scheduledDate !== today) {
+          await scheduleDailyNotification({
+            body: `👋 Good morning, ${me.nickname}. Track your daily GPA.`,
+          });
+          await AsyncStorage.setItem(STORAGE_NAME.NOTIFICATION_FLAG_KEY, today);
+        }
       }
     });
   }, [me, settings]);

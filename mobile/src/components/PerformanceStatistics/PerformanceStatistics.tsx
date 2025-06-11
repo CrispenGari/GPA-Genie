@@ -9,9 +9,11 @@ import { BarChart } from "react-native-gifted-charts";
 import { Ionicons } from "@expo/vector-icons";
 import { useHistoryStore } from "@/src/store/historyStore";
 import { useBarChartNavigation } from "@/src/utils/barData";
+import { useColorScheme } from "react-native";
 const VALUES = ["Weekly", "Monthly", "Yearly"];
 const PerformanceStatistics = () => {
   const { settings } = useSettingsStore();
+  const colorScheme = useColorScheme();
   const [index, setIndex] = React.useState(0);
   const { history } = useHistoryStore();
   const { barData, canGoNext, goNext, goPrevious, rangeLabel } =
@@ -20,6 +22,7 @@ const PerformanceStatistics = () => {
       VALUES[index].toLocaleLowerCase() as any
     );
 
+  const isDark = React.useMemo(() => colorScheme === "dark", [colorScheme]);
   return (
     <Animated.View
       style={{
@@ -104,12 +107,17 @@ const PerformanceStatistics = () => {
         </TouchableOpacity>
         <SegmentedControl
           sliderStyle={{ backgroundColor: COLORS.tertiary }}
-          style={{ flex: 1, backgroundColor: COLORS.white }}
-          activeFontStyle={{ fontFamily: FONTS.bold, color: COLORS.main }}
-          tabStyle={{ backgroundColor: COLORS.white }}
+          style={{
+            flex: 1,
+            backgroundColor: COLORS.white,
+          }}
+          activeFontStyle={{
+            fontFamily: FONTS.bold,
+            color: COLORS.black,
+          }}
           fontStyle={{
             fontFamily: FONTS.bold,
-            color: COLORS.main,
+            color: isDark ? COLORS.gray200 : COLORS.main,
           }}
           values={VALUES}
           selectedIndex={index}

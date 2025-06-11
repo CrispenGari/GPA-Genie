@@ -30,6 +30,7 @@ export const STORAGE_NAME = {
   ME: "user-me",
   SETTINGS: "my-settings",
   HISTORY: "my-history",
+  NOTIFICATION_FLAG_KEY: "notification-triggered",
 };
 
 export const relativeTimeObject = {
