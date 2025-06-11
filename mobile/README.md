@@ -18,3 +18,9 @@ Inspecting output of `eas` build
 ```shell
 eas build:inspect --platform android --stage archive --output inspect-output
 ```
+
+Creating an `apk` file.
+
+```shell
+eas build -p android --profile preview --clear-cache
+```
