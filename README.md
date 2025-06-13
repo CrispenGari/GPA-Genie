@@ -70,6 +70,10 @@ Here are some demo screenshot for the mobile app.
 <img src="/images/3.jpg" alt="demo" width="200"/>
 </p>
 
+### 🎊 APK
+
+The apk file can be downloaded [here](/apk/gpa-gine.apk).
+
 ### 📍 License
 
 This project is licensed under the [MIT](/LICENSE) License.
