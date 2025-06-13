@@ -12,7 +12,7 @@ const Layout = () => {
   } = useMediaQuery();
   return (
     <Tabs
-      initialRouteName="index"
+      initialRouteName="home"
       screenOptions={{
         tabBarStyle: {
           height:
@@ -41,7 +41,7 @@ const Layout = () => {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: "Dashboard",
           tabBarIcon: ({ color, size }) => (

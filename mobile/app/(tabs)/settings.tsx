@@ -166,6 +166,8 @@ const Page = () => {
                     clear();
                     restore();
                     destroy();
+                    router.dismissAll();
+                    router.replace("/");
                   },
                 },
                 {

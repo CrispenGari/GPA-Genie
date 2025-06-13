@@ -40,7 +40,7 @@ const Page = () => {
                 if (settings.haptics) {
                   await onImpact();
                 }
-                router.replace({ pathname: "/(tabs)" });
+                router.replace({ pathname: "/(tabs)/home" });
               },
             },
           ],

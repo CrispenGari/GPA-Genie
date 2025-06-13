@@ -22,6 +22,8 @@ const ProfileCard = ({ title }: Props) => {
   const { settings } = useSettingsStore();
   const router = useRouter();
 
+  if (!!!me) return null;
+
   return (
     <SafeAreaView
       style={{

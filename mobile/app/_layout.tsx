@@ -153,7 +153,7 @@ const RootLayout = () => {
 
   React.useEffect(() => {
     if (!!me && me.completed) {
-      router.replace("/(tabs)");
+      router.replace("/(tabs)/home");
     }
   }, []);
 

@@ -254,7 +254,7 @@ const Page = () => {
                   if (router.canGoBack()) {
                     router.back();
                   } else {
-                    router.replace({ pathname: "/(tabs)" });
+                    router.replace({ pathname: "/(tabs)/home" });
                   }
                 }}
                 style={[styles.btn]}
@@ -303,7 +303,7 @@ const Page = () => {
                   if (router.canGoBack()) {
                     router.back();
                   } else {
-                    router.replace({ pathname: "/(tabs)" });
+                    router.replace({ pathname: "/(tabs)/home" });
                   }
                 }}
               >

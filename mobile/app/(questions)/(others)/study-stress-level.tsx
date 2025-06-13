@@ -94,7 +94,7 @@ const Page = () => {
       }
 
       router.replace({
-        pathname: "/(tabs)",
+        pathname: "/(tabs)/home",
       });
     }
   };

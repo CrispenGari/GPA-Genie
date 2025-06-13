@@ -77,7 +77,7 @@ const Page = () => {
                 completed: true,
               });
               router.navigate({
-                pathname: "/(tabs)",
+                pathname: "/(tabs)/home",
               });
             }}
             onPrevious={() => {
